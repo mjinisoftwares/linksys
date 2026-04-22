@@ -60,7 +60,7 @@ export default async function ServicePage({ params: paramsPromise }: Args) {
       <ServiceHero service={service} />
 
       {/* Content Section */}
-      <section className="pb-28  ">
+      <section className="pb-28 shadow-lg">
         <div className="container">
           <div className="p-12 mx-auto prose mt-[-10%] bg-white dark:bg-gray-800 z-20 relative max-w-3xl dark:prose-invert  rounded-lg shadow-lg ">
             <RichText data={service.content} enableGutter={false} />
