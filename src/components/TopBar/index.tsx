@@ -25,7 +25,7 @@ const socialLinks = [
 export function TopBarComponent() {
   return (
     <div className="bg-primary py-1 hidden md:block">
-      <div className="z-50 mx-auto px-4 sm:px-8 md:px-12 lg:px-12 ">
+      <div className="z-50 mx-auto px-4 sm:px-8 md:px-12 lg:px-14 ">
         <div className="flex justify-between items-center relative">
           {/* Left: Contact Info */}
           <div className="flex space-x-4 z-10">
