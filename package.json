@@ -1,7 +1,7 @@
 {
   "name": "linksys-fiber-networks",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Internet Service Provider in Molo",
   "license": "MIT",
   "type": "module",
   "scripts": {

@@ -97,6 +97,19 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
     limit: 1,
     overrideAccess: draft,
     pagination: false,
+    select: {
+      title: true,
+      slug: true,
+      heroImage: true,
+      content: true,
+      relatedPosts: true,
+      authors: true,
+      categories: true,
+      publishedAt: true,
+      updatedAt: true,
+      createdAt: true,
+      _status: true,
+    },
     where: {
       slug: {
         equals: slug,

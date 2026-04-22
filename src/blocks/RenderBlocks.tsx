@@ -7,12 +7,12 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { StatsBlock } from './Stats/config'
-import { AboutBlock } from './About/config'
-import { PackagesBlock } from './Packages/config'
-import WhyChooseUsBlock from './WhyChooseUs/config'
-import CTABlock from './CTABlock/config'
-import { ServiceBlock } from './ServiceBlock/config'
+import { AboutBlock } from './About/Component'
+import { PackagesBlock } from './Packages/Component'
+import WhyChooseUsBlock from './WhyChooseUs/Component'
+import CTABlock from './CTABlock/Component'
+import { ServiceBlock } from './ServiceBlock/Component'
+import StatsBlock from './Stats/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
