@@ -62,7 +62,7 @@ export default async function ServicePage({ params: paramsPromise }: Args) {
       {/* Content Section */}
       <section className="pb-32  ">
         <div className="container">
-          <div className="p-12 mx-auto prose mt-[-10%] bg-white z-20 relative max-w-3xl dark:prose-invert  rounded-lg shadow-lg ">
+          <div className="p-12 mx-auto prose mt-[-10%] bg-white dark:bg-gray-800 z-20 relative max-w-3xl dark:prose-invert  rounded-lg shadow-lg ">
             <RichText data={service.content} enableGutter={false} />
           </div>
         </div>
