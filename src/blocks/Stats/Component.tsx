@@ -67,7 +67,7 @@ const StatsBlock: React.FC<Props> = ({ className, heading, stats }) => {
             <p className="text-3xl lg:text-4xl font-black mb-2 tabular-nums text-accent">
               <CountUp value={stat?.number} suffix={stat?.suffix} />
             </p>
-            <span className="text-sm font-medium text-background/80 uppercase tracking-wide">
+            <span className="text-sm font-medium text-background/80 dark:text-white/80 uppercase tracking-wide">
               {stat?.label}
             </span>
           </div>
