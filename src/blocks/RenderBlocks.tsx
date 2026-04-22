@@ -7,6 +7,12 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { StatsBlock } from './Stats/config'
+import { AboutBlock } from './About/config'
+import { PackagesBlock } from './Packages/config'
+import WhyChooseUsBlock from './WhyChooseUs/config'
+import CTABlock from './CTABlock/config'
+import { ServiceBlock } from './ServiceBlock/config'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -14,6 +20,12 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  stats: StatsBlock,
+  about: AboutBlock,
+  packages: PackagesBlock,
+  serviceBlock: ServiceBlock,
+  whyChooseUs: WhyChooseUsBlock,
+  ctaBlock: CTABlock,
 }
 
 export const RenderBlocks: React.FC<{
