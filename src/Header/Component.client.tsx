@@ -51,7 +51,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       <TopBarComponent />
 
       {/* NAVBAR */}
-      <div className="bg-white py-2 border-b border-accent px-4 sm:px-8 md:px-12 flex items-center justify-between relative">
+      <div className="bg-white py-2 border-b border-accent px-4 sm:px-8 md:px-12 lg:px-12 xl:px-16 flex items-center justify-between relative">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Logo loading="eager" priority="high" />
