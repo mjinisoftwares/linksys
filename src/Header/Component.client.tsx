@@ -71,7 +71,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden ml-auto"
+          className="md:hidden ml-auto text-primary"
           onClick={() => setMobileMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
