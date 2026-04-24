@@ -121,7 +121,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <section className="w-full py-16 px-4 md:px-8">
+    <section className="w-full py-16 px-4 md:px-12">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
         {/* LEFT IMAGE */}
         <div className="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden">

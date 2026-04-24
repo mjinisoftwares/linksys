@@ -13,6 +13,7 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers>
           <Header />
           {children}
+          <WhatsAppButton />
           <Footer />
         </Providers>
       </body>
