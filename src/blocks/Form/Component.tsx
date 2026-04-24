@@ -122,6 +122,16 @@ export const FormBlock: React.FC<
 
   return (
     <section className="w-full py-16 px-4 md:px-12 lg:px-16">
+      <div className="max-w-4xl mx-auto text-center">
+        {enableIntro && introContent && !hasSubmitted && (
+          <RichText
+            className=" [&_h1]:font-bold pt-8 mb-6"
+            data={introContent}
+            enableGutter={false}
+          />
+        )}
+        <hr className="mb-12 border-border" />
+      </div>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
         {/* LEFT IMAGE */}
         <div className="relative w-full h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
@@ -131,10 +141,6 @@ export const FormBlock: React.FC<
 
         {/* RIGHT FORM */}
         <div className="w-full">
-          {enableIntro && introContent && !hasSubmitted && (
-            <RichText className="mb-8" data={introContent} enableGutter={false} />
-          )}
-
           <div className="p-6 border border-border rounded-2xl bg-background">
             <FormProvider {...formMethods}>
               {!isLoading && hasSubmitted && confirmationType === 'message' && (
