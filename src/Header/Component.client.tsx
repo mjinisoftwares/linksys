@@ -65,34 +65,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-4">
           <Button variant="accent" asChild>
-            <Link href="/contact">Book Now</Link>
+            <Link href="/contact">Get in Touch</Link>
           </Button>
-
-          {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="secondary" className="gap-2">
-                  <span className="hidden sm:inline">{user.name || user.email}</span>
-                  <div className="w-6 h-6 rounded-full bg-primary/70 flex items-center justify-center">
-                    {user.name?.charAt(0) || user.email?.charAt(0)}
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem asChild>
-                  <Link href="/account">Account</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => (window.location.href = '/logout')}>
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Button variant="secondary" asChild>
-              <Link href="/login">Sign In</Link>
-            </Button>
-          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -113,28 +87,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <div className="flex flex-col gap-3">
             <Button asChild>
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Book Now
+                Get in Touch
               </Link>
             </Button>
-
-            {user ? (
-              <>
-                <Button variant="secondary" asChild>
-                  <Link href="/account" onClick={() => setMobileMenuOpen(false)}>
-                    Account
-                  </Link>
-                </Button>
-                <Button variant="secondary" onClick={() => (window.location.href = '/logout')}>
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Button variant="secondary" asChild>
-                <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                  Sign In
-                </Link>
-              </Button>
-            )}
           </div>
         </div>
       )}

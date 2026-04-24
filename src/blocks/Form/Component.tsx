@@ -113,28 +113,50 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-[48rem]">
-      {enableIntro && introContent && !hasSubmitted && (
-        <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
-      )}
-      <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
-        <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === 'message' && (
-            <RichText data={confirmationMessage} />
+    <section className="w-full py-16 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+        {/* 🔹 LEFT IMAGE (HARDCODED) */}
+        <div className="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden">
+          <img
+            src="/support.webp" // 👉 replace with your image
+            alt="Contact"
+            className="w-full h-full object-cover"
+          />
+
+          {/* Optional overlay */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* 🔹 RIGHT FORM */}
+        <div className="w-full">
+          {enableIntro && introContent && !hasSubmitted && (
+            <RichText className="mb-8" data={introContent} enableGutter={false} />
           )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-          {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
-          {!hasSubmitted && (
-            <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="mb-4 last:mb-0">
-                {formFromProps &&
-                  formFromProps.fields &&
-                  formFromProps.fields?.map((field, index) => {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
-                    if (Field) {
+
+          <div className="p-6 border border-border rounded-2xl bg-background">
+            <FormProvider {...formMethods}>
+              {!isLoading && hasSubmitted && confirmationType === 'message' && (
+                <RichText data={confirmationMessage} />
+              )}
+
+              {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+
+              {error && (
+                <div className="text-destructive">
+                  {`${error.status || '500'}: ${error.message || ''}`}
+                </div>
+              )}
+
+              {!hasSubmitted && (
+                <form id={formID} onSubmit={handleSubmit(onSubmit)}>
+                  <div className="mb-4">
+                    {formFromProps?.fields?.map((field, index) => {
+                      const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
+
+                      if (!Field) return null
+
                       return (
-                        <div className="mb-6 last:mb-0" key={index}>
+                        <div className="mb-6" key={index}>
                           <Field
                             form={formFromProps}
                             {...field}
@@ -145,18 +167,18 @@ export const FormBlock: React.FC<
                           />
                         </div>
                       )
-                    }
-                    return null
-                  })}
-              </div>
+                    })}
+                  </div>
 
-              <Button form={formID} type="submit" variant="default">
-                {submitButtonLabel}
-              </Button>
-            </form>
-          )}
-        </FormProvider>
+                  <Button type="submit" className="w-full rounded-full">
+                    {submitButtonLabel}
+                  </Button>
+                </form>
+              )}
+            </FormProvider>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
