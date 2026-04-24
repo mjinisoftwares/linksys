@@ -121,50 +121,58 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <section className="w-full py-16 px-4 md:px-12 lg:px-16">
-      <div className="max-w-4xl mx-auto text-center">
-        {enableIntro && introContent && !hasSubmitted && (
-          <RichText
-            className=" [&_h1]:font-bold pt-8 mb-6"
-            data={introContent}
-            enableGutter={false}
-          />
-        )}
-        <hr className="mb-12 border-border" />
+    <section className="w-full py-20 px-4 md:px-12 lg:px-16">
+      {/* 🔹 TOP INTRO */}
+      <div className="max-w-3xl mx-auto text-center">
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          Contact Us to Get <span className="text-accent underline">Connected</span>
+        </h2>
+
+        <p className="text-muted-foreground mb-8">
+          Reach out today and get fast, reliable internet for your home or business.
+        </p>
       </div>
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-        {/* LEFT IMAGE */}
-        <div className="relative w-full h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
+
+      {/* 🔹 MAIN GRID */}
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        {/* 🔹 LEFT IMAGE */}
+        <div className="relative w-full h-[500px] lg:h-[650px] rounded-3xl overflow-hidden">
           <img src="/support.webp" alt="Contact" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        {/* RIGHT FORM */}
+        {/* 🔹 RIGHT FORM */}
         <div className="w-full">
-          <div className="p-6 border border-border rounded-2xl bg-background">
+          {/* FORM CARD */}
+          <div className="p-6 md:p-8 rounded-2xl border border-border bg-background/80 backdrop-blur-sm shadow-sm">
             <FormProvider {...formMethods}>
               {!isLoading && hasSubmitted && confirmationType === 'message' && (
                 <RichText data={confirmationMessage} />
               )}
 
-              {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+              {isLoading && !hasSubmitted && (
+                <p className="text-sm text-muted-foreground">Loading, please wait...</p>
+              )}
 
               {error && (
-                <div className="text-destructive">
+                <div className="text-destructive text-sm mb-4">
                   {`${error.status || '500'}: ${error.message || ''}`}
                 </div>
               )}
 
               {!hasSubmitted && (
                 <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-                  <div className="mb-4">
+                  <div className="space-y-6">
                     {formFromProps?.fields?.map((field, index) => {
                       const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
 
                       if (!Field) return null
 
                       return (
-                        <div className="mb-6" key={index}>
+                        <div key={index}>
                           <Field
                             form={formFromProps}
                             {...field}
@@ -178,7 +186,7 @@ export const FormBlock: React.FC<
                     })}
                   </div>
 
-                  <Button type="submit" className="w-full rounded-full">
+                  <Button type="submit" className="w-full mt-6 rounded-full text-base">
                     {submitButtonLabel}
                   </Button>
                 </form>
