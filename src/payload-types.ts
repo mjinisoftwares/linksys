@@ -603,10 +603,6 @@ export interface ArchiveBlock {
  */
 export interface FormBlock {
   form: number | Form;
-  image: number | Media;
-  imageAlt: string;
-  title: string;
-  description?: string | null;
   enableIntro?: boolean | null;
   introContent?: {
     root: {
@@ -1419,10 +1415,6 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  */
 export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
-  image?: T;
-  imageAlt?: T;
-  title?: T;
-  description?: T;
   enableIntro?: T;
   introContent?: T;
   id?: T;
