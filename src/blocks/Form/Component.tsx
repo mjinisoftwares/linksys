@@ -1,4 +1,5 @@
 'use client'
+
 import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/types'
 import { useRouter } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
@@ -33,6 +34,7 @@ export const FormBlock: React.FC<
   const formMethods = useForm({
     defaultValues: formFromProps.fields,
   })
+
   const {
     control,
     formState: { errors },
@@ -43,11 +45,15 @@ export const FormBlock: React.FC<
   const [isLoading, setIsLoading] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState<boolean>()
   const [error, setError] = useState<{ message: string; status?: string } | undefined>()
+
   const router = useRouter()
+
+  const WHATSAPP_NUMBER = '254713366366' // 🔥 your number
 
   const onSubmit = useCallback(
     (data: FormFieldBlock[]) => {
       let loadingTimerID: ReturnType<typeof setTimeout>
+
       const submitForm = async () => {
         setError(undefined)
 
@@ -56,7 +62,6 @@ export const FormBlock: React.FC<
           value,
         }))
 
-        // delay loading indicator by 1s
         loadingTimerID = setTimeout(() => {
           setIsLoading(true)
         }, 1000)
@@ -74,29 +79,32 @@ export const FormBlock: React.FC<
           })
 
           const res = await req.json()
-
           clearTimeout(loadingTimerID)
 
           if (req.status >= 400) {
             setIsLoading(false)
-
             setError({
               message: res.errors?.[0]?.message || 'Internal Server Error',
               status: res.status,
             })
-
             return
           }
 
           setIsLoading(false)
           setHasSubmitted(true)
 
+          // 🔥 WHATSAPP MESSAGE
+          const message = Object.entries(data)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join('%0A')
+
+          const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`
+
+          window.open(whatsappURL, '_blank')
+
           if (confirmationType === 'redirect' && redirect) {
             const { url } = redirect
-
-            const redirectUrl = url
-
-            if (redirectUrl) router.push(redirectUrl)
+            if (url) router.push(url)
           }
         } catch (err) {
           console.warn(err)
@@ -115,19 +123,13 @@ export const FormBlock: React.FC<
   return (
     <section className="w-full py-16 px-4 md:px-8">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-        {/* 🔹 LEFT IMAGE (HARDCODED) */}
+        {/* LEFT IMAGE */}
         <div className="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden">
-          <img
-            src="/support.webp" // 👉 replace with your image
-            alt="Contact"
-            className="w-full h-full object-cover"
-          />
-
-          {/* Optional overlay */}
+          <img src="/support.webp" alt="Contact" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        {/* 🔹 RIGHT FORM */}
+        {/* RIGHT FORM */}
         <div className="w-full">
           {enableIntro && introContent && !hasSubmitted && (
             <RichText className="mb-8" data={introContent} enableGutter={false} />
