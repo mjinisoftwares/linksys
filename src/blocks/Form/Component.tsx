@@ -137,7 +137,7 @@ export const FormBlock: React.FC<
       {/* 🔹 MAIN GRID */}
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         {/* 🔹 LEFT IMAGE */}
-        <div className="relative w-full h-[500px] lg:h-[650px] rounded-3xl overflow-hidden">
+        <div className="relative w-full h-[500px] lg:h-[700px] rounded-xl overflow-hidden">
           <img src="/support.webp" alt="Contact" className="w-full h-full object-cover" />
 
           {/* Overlay */}
