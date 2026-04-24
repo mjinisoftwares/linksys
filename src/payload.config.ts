@@ -16,6 +16,7 @@ import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { Services } from './collections/Services'
 import { Packages } from './collections/Packages'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -91,4 +92,9 @@ export default buildConfig({
     },
     tasks: [],
   },
+  email: resendAdapter({
+    defaultFromAddress: 'info@linksysfiber.ke',
+    defaultFromName: 'Linksys Fiber Networks',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
 })
