@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 
 export default function Cta() {
   return (
-    <section className="bg-  text-gray-300 py-20">
+    <section className="bg-primary text-gray-300 py-20">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold mb-6">Looking for Fast, Reliable Internet?</h2>
         <p className="text-base mb-8 md:w-2/5 mx-auto">
