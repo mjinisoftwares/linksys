@@ -92,7 +92,7 @@ Message: ${data.message}`
             <div>
               <select
                 {...register('service', { required: 'Please select a service' })}
-                className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#382F81]"
+                className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#382F81] dark:bg-[#1a1a1a] dark:text-white"
               >
                 <option value="">Select a Service</option>
                 <option>Hotspot & Public Wi-Fi</option>
@@ -129,7 +129,7 @@ Message: ${data.message}`
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 rounded-lg font-semibold bg-[#382F81] text-white hover:bg-[#F9640C] transition"
+              className="w-full py-3 rounded-lg font-semibold bg-primary text-white hover:bg-accent transition"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
