@@ -217,6 +217,7 @@ export interface Page {
     | ServiceBlock
     | WhyChooseUsBlock
     | CTABlock
+    | ContactBlockComponent
   )[];
   meta?: {
     title?: string | null;
@@ -1001,6 +1002,16 @@ export interface CTABlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlockComponent".
+ */
+export interface ContactBlockComponent {
+  heading?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1321,6 +1332,7 @@ export interface PagesSelect<T extends boolean = true> {
         serviceBlock?: T | ServiceBlockSelect<T>;
         whyChooseUs?: T | WhyChooseUsBlockSelect<T>;
         ctaBlock?: T | CTABlockSelect<T>;
+        contactBlock?: T | ContactBlockComponentSelect<T>;
       };
   meta?:
     | T
@@ -1510,6 +1522,15 @@ export interface WhyChooseUsBlockSelect<T extends boolean = true> {
  * via the `definition` "CTABlock_select".
  */
 export interface CTABlockSelect<T extends boolean = true> {
+  heading?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlockComponent_select".
+ */
+export interface ContactBlockComponentSelect<T extends boolean = true> {
   heading?: T;
   id?: T;
   blockName?: T;
