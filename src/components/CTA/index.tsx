@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Cta() {
   return (
@@ -11,12 +12,14 @@ export default function Cta() {
           Linksys Fiber Networks is here to keep your home or business online with high-speed,
           uninterrupted connectivity across Molo and its environs.
         </p>
-        <Button
-          size="lg"
-          className="bg-accent hover:bg-secondary text-white text-sm py-4 px-6 rounded-full transition-colors duration-300"
-        >
-          Get in Touch
-        </Button>
+        <Link href="/contact" passHref>
+          <Button
+            size="lg"
+            className="bg-accent hover:bg-secondary cursor-pointer text-white text-sm py-4 px-6 rounded-full transition-colors duration-300"
+          >
+            Get in Touch
+          </Button>
+        </Link>
       </div>
     </section>
   )

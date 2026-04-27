@@ -49,7 +49,6 @@ export function TopBarComponent() {
 
           {/* Right: Social Icons */}
           <div className="flex space-x-3 z-10">
-            .
             {socialLinks.map((link) => (
               <Link key={link.name} href={link.href} aria-label={link.name}>
                 <div className="bg-secondary p-1 rounded-full text-white hover:bg-accent transition-colors">

@@ -95,7 +95,7 @@ export const PackagesBlock: React.FC<Props> = ({ title, subtitle, packages, clas
                   {/* CTA */}
                   <div className="p-6 pt-0 mt-auto">
                     <Link
-                      href={`/packages/${pkg.slug}`}
+                      href={`/contact`}
                       className="block w-full text-center rounded-lg bg-[#02659C] text-white py-3 font-semibold hover:bg-[#014a73] transition-all duration-300"
                     >
                       Get Connected →

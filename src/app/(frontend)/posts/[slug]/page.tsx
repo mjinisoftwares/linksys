@@ -17,73 +17,96 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
+
   const posts = await payload.find({
     collection: 'posts',
     draft: false,
     limit: 1000,
     overrideAccess: false,
     pagination: false,
-    select: {
-      slug: true,
-    },
+    select: { slug: true },
   })
 
-  const params = posts.docs.map(({ slug }) => {
-    return { slug }
-  })
-
-  return params
+  return posts.docs.map(({ slug }) => ({ slug }))
 }
 
 type Args = {
-  params: Promise<{
-    slug?: string
-  }>
+  params: Promise<{ slug?: string }>
 }
 
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  // Decode to support slugs with special characters
+
   const decodedSlug = decodeURIComponent(slug)
   const url = '/posts/' + decodedSlug
+
   const post = await queryPostBySlug({ slug: decodedSlug })
 
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pt-16 pb-12 bg-primary/10 ">
+    <article className="relative bg-gradient-to-b from-primary/10 via-transparent to-transparent pt-16 pb-20">
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
-
       {draft && <LivePreviewListener />}
 
+      {/* 🔥 HERO */}
       <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-[4rem]  ">
-        <div className="container bg-primary/5 ">
-          <RichText
-            className="max-w-[48rem] mx-auto p-8 bg-white rounded-2xl shadow-lg mt-[-8rem] border border-accent"
-            data={post.content}
-            enableGutter={false}
-          />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              className="px-4 mt-12 max-w-[40rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+      {/* 🔥 CONTENT WRAPPER */}
+      <section className="relative z-30">
+        <div className="container">
+          <div
+            className="
+              relative mx-auto mt-[-4rem] max-w-3xl rounded-2xl shadow-2xl
+              px-6 py-10 md:px-12 md:py-12
+              
+              bg-white text-gray-900
+              dark:bg-[#1e1b2e] dark:text-gray-100
+              
+              backdrop-blur-md border border-black/5 dark:border-white/10
+            "
+          >
+            {/* ✍️ CONTENT */}
+            <RichText
+              data={post.content}
+              enableGutter={false}
+              className="
+                prose mx-auto max-w-none
+                
+                prose-headings:font-bold
+                prose-headings:tracking-tight
+                
+                prose-h1:text-3xl md:prose-h1:text-4xl
+                prose-h2:text-2xl md:prose-h2:text-3xl
+                
+                prose-p:text-base 
+                prose-p:leading-relaxed
+                
+                prose-a:text-[#77bc43] hover:prose-a:opacity-80
+                
+                prose-strong:font-semibold
+                
+                dark:prose-invert
+              "
             />
-          )}
+          </div>
         </div>
-      </div>
+        {post.relatedPosts && post.relatedPosts.length > 0 && (
+          <RelatedPosts
+            className="px-8 md:px-12 lg:px-16  mt-12 max-w-[32rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+            docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+          />
+        )}
+      </section>
     </article>
   )
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
   const post = await queryPostBySlug({ slug: decodedSlug })
 
@@ -92,7 +115,6 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
-
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
@@ -101,6 +123,9 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
     limit: 1,
     overrideAccess: draft,
     pagination: false,
+    where: {
+      slug: { equals: slug },
+    },
     select: {
       title: true,
       slug: true,
@@ -113,11 +138,6 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
       updatedAt: true,
       createdAt: true,
       _status: true,
-    },
-    where: {
-      slug: {
-        equals: slug,
-      },
     },
   })
 

@@ -23,7 +23,7 @@ export const Logo = (props: Props) => {
       fetchPriority={priority}
       decoding="async"
       className={clsx('max-w-[12rem] w-auto h-[64px]', className)}
-      src="/linksys-logo.png"
+      src="/linksys-logo-final.webp"
     />
   )
 }

@@ -154,10 +154,10 @@
   --popover-foreground: oklch(98% 0 0);
 
   /* Brand preserved but brighter */
-  --primary: #002639;
+  --primary: #012435;
   --primary-foreground: #e7eff3;
 
-  --secondary: #02659c;
+  --secondary: #025a8a;
   --secondary-foreground: #e7eff3;
 
   --accent: #77bc43;

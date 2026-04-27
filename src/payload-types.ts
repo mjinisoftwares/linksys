@@ -203,7 +203,15 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
+    media?: {
+      media?:
+        | {
+            mobile: number | Media;
+            desktop: number | Media;
+            id?: string | null;
+          }[]
+        | null;
+    };
   };
   layout: (
     | CallToActionBlock
@@ -1316,7 +1324,17 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        media?:
+          | T
+          | {
+              media?:
+                | T
+                | {
+                    mobile?: T;
+                    desktop?: T;
+                    id?: T;
+                  };
+            };
       };
   layout?:
     | T

@@ -60,10 +60,41 @@ export default async function ServicePage({ params: paramsPromise }: Args) {
       <ServiceHero service={service} />
 
       {/* Content Section */}
-      <section className="pb-28 shadow-lg">
+      <section className="relative z-30 pb-28">
         <div className="container">
-          <div className="p-12 mx-auto prose mt-[-10%] bg-white dark:bg-gray-800 z-20 relative max-w-3xl dark:prose-invert  rounded-lg shadow-lg ">
-            <RichText data={service.content} enableGutter={false} />
+          <div
+            className="
+        relative mx-auto mt-[-10%] max-w-3xl rounded-2xl shadow-2xl
+        px-6 py-10 md:px-12 md:py-12
+        
+        bg-white text-gray-900
+        dark:bg-[#1e1b2e] dark:text-gray-100
+        
+        backdrop-blur-md border border-black/5 dark:border-white/10
+      "
+          >
+            <RichText
+              data={service.content}
+              enableGutter={false}
+              className="
+          prose mx-auto max-w-none
+          
+          prose-headings:font-bold
+          prose-headings:tracking-tight
+          
+          prose-h1:text-3xl md:prose-h1:text-4xl
+          prose-h2:text-2xl md:prose-h2:text-3xl
+          
+          prose-p:text-base md:prose-p:text-lg
+          prose-p:leading-relaxed
+          
+          prose-a:text-[#77bc43] hover:prose-a:opacity-80
+          
+          prose-strong:font-semibold
+          
+          dark:prose-invert
+        "
+            />
           </div>
         </div>
       </section>
