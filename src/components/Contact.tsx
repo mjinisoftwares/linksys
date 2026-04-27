@@ -43,7 +43,7 @@ Message: ${data.message}`
         {/* LEFT: IMAGE */}
         <div className="hidden md:block relative">
           <img
-            src="/contact.jpg" // 👉 replace with your image
+            src="/support.webp" // 👉 replace with your image
             alt="Contact"
             className="w-full h-full object-cover"
           />
