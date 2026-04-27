@@ -47,11 +47,7 @@ Message: ${data.message}`
             alt="Contact"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-6">
-            <h2 className="text-white text-3xl font-semibold text-center">
-              Let’s Build Something Powerful
-            </h2>
-          </div>
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-6"></div>
         </div>
 
         {/* RIGHT: FORM */}
