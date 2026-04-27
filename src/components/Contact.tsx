@@ -21,7 +21,7 @@ export default function ContactForm() {
   } = useForm<FormData>()
 
   const onSubmit = (data: FormData) => {
-    const phoneNumber = '254729396862'
+    const phoneNumber = '254713366366'
 
     const text = `Hello, I have a new inquiry:
 
