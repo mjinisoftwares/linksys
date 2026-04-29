@@ -29,7 +29,7 @@ export default function Footer() {
             </p>
             <Link href="/" className="flex items-center mt-4  ">
               <img
-                src="/linksys-logo.png"
+                src="/linksys-logo-final.webp"
                 alt="Linksys Molo Logo"
                 width={180}
                 height={40}
