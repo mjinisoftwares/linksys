@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import { Globe, Cog, Shield } from 'lucide-react'
 import Image from 'next/image'
@@ -26,7 +27,6 @@ const iconMap = {
   shield: <Shield />,
 }
 
-/* 🔥 Cleaner animation variants (IMPORTANT) */
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
@@ -53,7 +53,7 @@ export const AboutBlock: React.FC<AboutBlockProps> = ({
   values = [],
 }) => {
   return (
-    <section className="py-16 px-6 md:px-12 text-black overflow-hidden">
+    <section className="py-20 px-6 md:px-12 bg-white text-black overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-24">
         {/* ================= COMPANY INTRO ================= */}
         <motion.div
@@ -61,16 +61,15 @@ export const AboutBlock: React.FC<AboutBlockProps> = ({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-white rounded-2xl p-6 shadow-sm border border-[#63B5D3]/30 relative overflow-hidden"
+          className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden"
         >
           {image?.url && (
-            <div className="absolute inset-0 hidden lg:block">
+            <div className="absolute inset-0 opacity-8">
               <Image
                 src={image.url}
                 alt={image.alt || 'About background'}
                 fill
-                className="object-cover opacity-[0.05]"
+                className="object-cover"
               />
             </div>
           )}
@@ -79,25 +78,24 @@ export const AboutBlock: React.FC<AboutBlockProps> = ({
             {companyIntroLabel && (
               <div className="flex items-center gap-3 mb-6">
                 <div className="size-2.5 bg-accent rounded-full" />
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
                   {companyIntroLabel}
                 </span>
               </div>
             )}
 
-            {title && (
-              <h2 className="text-4xl font-bold leading-tight mb-6 text-black/80">{title}</h2>
-            )}
+            {title && <h2 className="text-4xl font-bold mb-6 text-black">{title}</h2>}
 
-            {companyStory && <p className="text-zinc-500 mb-8">{companyStory}</p>}
+            {companyStory && <p className="text-gray-600 leading-relaxed">{companyStory}</p>}
 
             {/* SERVICES */}
+
             {services.length > 0 && (
-              <div className="flex flex-wrap gap-3 pt-4 border-t border-accent/60">
+              <div className="flex flex-wrap gap-3 pt-6 mt-6 border-t border-gray-100">
                 {services.map((item, i) => (
                   <span
                     key={i}
-                    className="text-xs font-semibold text-[#02659C] bg-[#63B5D3]/10 px-3 py-1 rounded-full hover:bg-[#63B5D3]/20 transition"
+                    className="text-xs font-semibold text-accent bg-accent/10 px-3 py-2 rounded-full border border-gray-100 hover:bg-gray-100 transition"
                   >
                     {item.service}
                   </span>
@@ -107,38 +105,35 @@ export const AboutBlock: React.FC<AboutBlockProps> = ({
           </div>
         </motion.div>
 
-        {/* ================= ABOUT / STATS ================= */}
+        {/* ================= ABOUT + STATS ================= */}
         {(subtitle || description || stats.length > 0) && (
-          <div className="grid lg:grid-cols-2 gap-10 items-center px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* TEXT */}
             <motion.div
               variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-5"
+              className="space-y-6"
             >
               {subtitle && (
-                <motion.h3
-                  variants={fadeUp}
-                  className="text-3xl md:text-4xl font-bold text-zinc-600"
-                >
+                <motion.h3 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black">
                   {subtitle}
                 </motion.h3>
               )}
 
               {description && (
-                <motion.p variants={fadeUp} className="text-zinc-500">
+                <motion.p variants={fadeUp} className="text-gray-600 leading-relaxed">
                   {description}
                 </motion.p>
               )}
 
               {stats.length > 0 && (
-                <motion.div variants={stagger} className="flex gap-8 pt-4 flex-wrap">
+                <motion.div variants={stagger} className="flex gap-10 pt-4 flex-wrap">
                   {stats.map((stat, i) => (
                     <motion.div key={i} variants={fadeUp}>
                       <div className="text-2xl font-bold text-accent">{stat.value}</div>
-                      <div className="text-xs uppercase text-accent font-semibold">
+                      <div className="text-xs uppercase text-gray-500 font-semibold">
                         {stat.label}
                       </div>
                     </motion.div>
@@ -149,31 +144,26 @@ export const AboutBlock: React.FC<AboutBlockProps> = ({
 
             {/* IMAGE */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative aspect-[16/10] rounded-3xl overflow-hidden"
+              className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-white border border-gray-100"
             >
               {image?.url && (
-                <>
-                  <Image
-                    src={image.url}
-                    alt={image.alt || 'About image'}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-[#02659C]/60 mix-blend-multiply" />
-                </>
+                <Image
+                  src={image.url}
+                  alt={image.alt || 'About image'}
+                  fill
+                  className="object-cover"
+                />
               )}
             </motion.div>
           </div>
         )}
 
-        <div className="h-1 bg-accent" />
-
         {/* ================= VALUES ================= */}
-        <h3 className="text-zinc-600 px-4 text-3xl md:text-4xl font-bold text-center">
+        <h3 className="text-3xl md:text-4xl font-bold text-center text-black">
           What Makes Us Different
         </h3>
 
@@ -183,21 +173,21 @@ export const AboutBlock: React.FC<AboutBlockProps> = ({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="px-4 grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-8"
           >
             {values.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="p-6 bg-white border border-[#63B5D3]/20 rounded-3xl shadow-sm hover:shadow-md transition"
+                className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition"
               >
                 <div className="size-12 flex items-center justify-center bg-accent/10 text-accent rounded-xl mb-6">
                   {item.icon && iconMap[item.icon]}
                 </div>
 
-                <h3 className="text-xl font-bold mb-2 text-[#02659C]">{item.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-black">{item.title}</h3>
 
-                <p className="text-sm text-zinc-600">{item.description}</p>
+                <p className="text-sm text-gray-600">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>

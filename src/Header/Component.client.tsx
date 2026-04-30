@@ -64,7 +64,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="accent" asChild>
+          <Button variant="accent" asChild className="py-6 px-6 ">
             <Link href="/contact">Get in Touch</Link>
           </Button>
         </div>

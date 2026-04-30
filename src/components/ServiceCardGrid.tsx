@@ -107,7 +107,7 @@ export function ServiceCardGrid({
         >
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 px-6 py-2 border border-primary text-primary rounded-lg hover:bg-primary/10 transition font-medium"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-accent text-accent rounded-full hover:bg-primary/10 transition font-medium"
           >
             View All Services <ArrowRight size={18} />
           </Link>

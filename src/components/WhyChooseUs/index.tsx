@@ -37,8 +37,10 @@ export default function WhyChooseUs() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Why Choose Us</h2>
 
-          <p className="text-[#E2E8F0]">
-            We are committed to providing the best real estate experience in Nairobi
+          <p className="text-[#E2E8F0] text-lg md:text-xl max-w-3xl mx-auto">
+            We are committed to providing the best internet service in Molo. Our reliable,
+            high-speed connections, fast installation, and 24/7 support make us the top choice for
+            homes and businesses in the area.
           </p>
         </div>
 

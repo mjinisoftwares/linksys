@@ -33,7 +33,7 @@ export const Card: React.FC<{
     <article
       ref={card.ref}
       className={cn(
-        'border border-border rounded-2xl overflow-hidden bg-card hover:shadow-md transition cursor-pointer',
+        'border border-border rounded-2xl overflow-hidden bg-background hover:shadow-md transition cursor-pointer',
         className,
       )}
     >
@@ -53,7 +53,7 @@ export const Card: React.FC<{
       {/* CONTENT */}
       <div className="p-5">
         {showCategories && hasCategories && (
-          <div className="uppercase text-xs tracking-wide text-muted-foreground mb-3">
+          <div className="uppercase text-xs tracking-wide text-muted-foreground mb-4">
             {categories?.map((category, index) => {
               if (typeof category === 'object') {
                 const isLast = index === categories.length - 1

@@ -17,8 +17,8 @@ import {
 export default function Footer() {
   return (
     <footer className="bg-white border-t">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24">
           {/* ABOUT */}
           <div className="mt-[-8px]">
             <h3 className="text-lg font-semibold my-2 text-accent">About Linksys</h3>
@@ -66,34 +66,6 @@ export default function Footer() {
               <li>
                 <Link href="/blog" className="text-gray-500 hover:text-accent">
                   Read Our Blogs
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* SUPPORT */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-accent">Support</h3>
-
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/privacy" className="text-gray-500 hover:text-accent">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/faqs" className="text-gray-500 hover:text-accent">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href="/support" className="text-gray-500 hover:text-accent">
-                  Customer Support
-                </Link>
-              </li>
-              <li>
-                <Link href="/posts" className="text-gray-500 hover:text-accent">
-                  News & Updates
                 </Link>
               </li>
             </ul>
