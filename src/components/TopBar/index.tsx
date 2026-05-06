@@ -24,23 +24,30 @@ const socialLinks = [
 
 export function TopBarComponent() {
   return (
-    <div className="bg-primary py-1 hidden md:block">
+    <div className="bg-primary py-1 ">
       <div className="z-50 mx-auto px-4 sm:px-8 md:px-12 lg:px-14 ">
         <div className="flex justify-between items-center relative">
           {/* Left: Contact Info */}
           <div className="flex space-x-4 z-10">
-            <div className="flex items-center space-x-2 text-xs text-gray-200">
-              <Mail className="w-4 h-4 text-accent" />
-              <span>info@linksysfiber.ke</span>
+            <div>
+              <Link
+                href="mailto:info@linksysfiber.ke "
+                className="flex items-center space-x-2 text-xs text-gray-200"
+              >
+                <Mail className="w-4 h-4 text-accent" />
+                <span>info@linksysfiber.ke</span>
+              </Link>
             </div>
             <div className="flex items-center space-x-2 text-xs text-gray-200">
-              <Phone className="w-4 h-4 text-accent" />
-              <span>0713-366-366</span>
+              <Link href="tel:+254713366366" className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-accent" />
+                <span>0713 366 366</span>
+              </Link>
             </div>
           </div>
 
           {/* Center: Marquee Container */}
-          <div className="ml-4 absolute left-1/2 -translate-x-1/2 w-[40%] overflow-hidden">
+          <div className="ml-4 absolute left-1/2 -translate-x-1/2 w-[40%] overflow-hidden hidden md:block">
             <div className=" whitespace-nowrap animate-marquee text-xs text-accent font-medium">
               Contact Us For Fast, Affordable and the Most Reliable Internet Connection in Molo and
               its Environs.
