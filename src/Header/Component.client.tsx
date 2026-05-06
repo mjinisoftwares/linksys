@@ -81,8 +81,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t shadow-lg px-4 sm:px-6 py-6 flex flex-col gap-4 text-sm overflow-x-hidden">
-          <HeaderNav data={data} />
+        <div className="md:hidden bg-white border-t shadow-lg px-4 sm:px-6 py-6 flex flex-col gap-4 text-xs sm:text-sm overflow-x-hidden ">
+          <div className="w-full flex flex-wrap justify-center">
+            <HeaderNav data={data} />
+          </div>
 
           <div className="flex flex-col gap-2 mt-4">
             <Button asChild>

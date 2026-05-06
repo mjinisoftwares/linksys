@@ -15,11 +15,6 @@ const socialLinks = [
     icon: Instagram,
     href: 'https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Flinksysfiber%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExbnhHWXZueDVJMGhBc2NZSXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR7UUiy3GS5_xy6Js1hrdRWjRo1PANI38rzj2JJXlcNbn0BpVZ2dwiAdoo_mJQ_aem_Jtv1Zj0arxo0StiVT35eow&h=AT7oI1_qEFvrJrklPhRU7QJwGI_J7_Fpx4UefzxJM6qRlLv2g12oieqtNGwVAT4uA0PYRqs07F0VGrRxZYmQIRR6RVWRrDi_sYEmZqMrvR1stAgvDaw1i3VD96Rmd2YgK_sF',
   },
-  {
-    name: 'YouTube',
-    icon: Youtube,
-    href: 'https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40linksysfibernet%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExbnhHWXZueDVJMGhBc2NZSXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR5dlQe-pJ04GktFd-yxCaB-H8-L3O5PG7ipM9xGdHSXxdtk8jgHRF1lm4Wtdg_aem_17UK-a_mn94ohBqPXDKqbA&h=AT4dlvqq6yLGXEPQgAklWuFuta1ZuwxJPuZ_LwI4PJDBNEPX_6WaRnIZbUx310Fptzj9YtpPe3fOybOtAs1GvTVTI1Byd9SUTX3Gjn38TyiVywOw2dsdXrVQgHAmbQc2KonY',
-  },
 ]
 
 export function TopBarComponent() {
