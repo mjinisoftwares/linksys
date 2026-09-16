@@ -1,11 +1,9 @@
-import type { NextConfig } from 'next'
-
-export const redirects: NextConfig['redirects'] = async () => {
+const redirects = async () => {
   const internetExplorerRedirect = {
     destination: '/ie-incompatible.html',
     has: [
       {
-        type: 'header' as const,
+        type: 'header',
         key: 'user-agent',
         value: '(.*Trident.*)', // all ie browsers
       },
@@ -17,5 +15,5 @@ export const redirects: NextConfig['redirects'] = async () => {
   return [internetExplorerRedirect]
 }
 
+export { redirects }
 export default redirects
-
