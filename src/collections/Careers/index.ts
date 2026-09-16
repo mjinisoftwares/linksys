@@ -99,8 +99,7 @@ export const Careers: CollectionConfig = {
       fields: [
         {
           name: 'requirement',
-          type: 'text',
-          required: true,
+          type: 'text',        
           label: 'Requirement',
         },
       ],
@@ -113,7 +112,6 @@ export const Careers: CollectionConfig = {
         {
           name: 'responsibility',
           type: 'text',
-          required: true,
           label: 'Responsibility',
         },
       ],

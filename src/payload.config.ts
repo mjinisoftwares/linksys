@@ -16,7 +16,6 @@ import { getServerSideURL } from './utilities/getURL'
 import { Services } from './collections/Services'
 import { Packages } from './collections/Packages'
 import { Careers } from './collections/Careers'
-import { JobApplications } from './collections/JobApplications'
 import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
@@ -67,7 +66,7 @@ export default buildConfig({
     },
     push: true,
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Services, Packages, Careers, JobApplications],
+  collections: [Pages, Posts, Media, Categories, Users, Services, Packages, Careers],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins,
