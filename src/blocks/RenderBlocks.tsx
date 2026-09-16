@@ -15,6 +15,7 @@ import { ServiceBlock } from './ServiceBlock/Component'
 import StatsBlock from './Stats/Component'
 import { contact } from '@/endpoints/seed/contact-page'
 import ContactBlock from './ContactBlock/Component'
+import CareersBlockComponent from './CareersBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -29,6 +30,7 @@ const blockComponents = {
   whyChooseUs: WhyChooseUsBlock,
   ctaBlock: CTABlock,
   contactBlock: ContactBlock,
+  careersBlock: CareersBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

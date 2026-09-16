@@ -74,6 +74,8 @@ export interface Config {
     users: User;
     services: Service;
     packages: Package;
+    careers: Career;
+    'job-applications': JobApplication;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -98,6 +100,8 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     packages: PackagesSelect<false> | PackagesSelect<true>;
+    careers: CareersSelect<false> | CareersSelect<true>;
+    'job-applications': JobApplicationsSelect<false> | JobApplicationsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -226,6 +230,7 @@ export interface Page {
     | WhyChooseUsBlock
     | CTABlock
     | ContactBlockComponent
+    | CareersBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1026,6 +1031,111 @@ export interface ContactBlockComponent {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CareersBlock".
+ */
+export interface CareersBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  showFilters?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'careersBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "careers".
+ */
+export interface Career {
+  id: number;
+  /**
+   * E.g. "Senior Network Engineer", "Sales Representative"
+   */
+  title: string;
+  department:
+    | 'engineering'
+    | 'sales-marketing'
+    | 'customer-support'
+    | 'operations'
+    | 'finance'
+    | 'human-resources'
+    | 'management';
+  /**
+   * E.g. "Nairobi, Kenya" or "Remote"
+   */
+  location: string;
+  type: 'full-time' | 'part-time' | 'contract' | 'internship' | 'freelance';
+  /**
+   * E.g. "KES 80,000 - 120,000" or "Competitive"
+   */
+  salaryRange?: string | null;
+  /**
+   * Brief job description shown on the careers listing page (max 300 chars)
+   */
+  summary: string;
+  description: string;
+  requirements?:
+    | {
+        requirement: string;
+        id?: string | null;
+      }[]
+    | null;
+  responsibilities?:
+    | {
+        responsibility: string;
+        id?: string | null;
+      }[]
+    | null;
+  benefits?:
+    | {
+        benefit: string;
+        id?: string | null;
+      }[]
+    | null;
+  deadline?: string | null;
+  status: 'open' | 'closed' | 'on-hold';
+  /**
+   * Show this job prominently on the careers page
+   */
+  featured?: boolean | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * All job applications received from the careers page
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-applications".
+ */
+export interface JobApplication {
+  id: number;
+  position: number | Career;
+  /**
+   * Snapshot of the job title at time of application
+   */
+  positionTitle?: string | null;
+  fullName: string;
+  email: string;
+  phone: string;
+  location?: string | null;
+  resume: number | Media;
+  coverLetter?: string | null;
+  linkedIn?: string | null;
+  experience?: ('0-1' | '1-3' | '3-5' | '5-10' | '10+') | null;
+  status: 'new' | 'reviewing' | 'interview' | 'accepted' | 'rejected';
+  /**
+   * Private notes about this applicant (not visible to the applicant)
+   */
+  adminNotes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1243,6 +1353,14 @@ export interface PayloadLockedDocument {
         value: number | Package;
       } | null)
     | ({
+        relationTo: 'careers';
+        value: number | Career;
+      } | null)
+    | ({
+        relationTo: 'job-applications';
+        value: number | JobApplication;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1357,6 +1475,7 @@ export interface PagesSelect<T extends boolean = true> {
         whyChooseUs?: T | WhyChooseUsBlockSelect<T>;
         ctaBlock?: T | CTABlockSelect<T>;
         contactBlock?: T | ContactBlockComponentSelect<T>;
+        careersBlock?: T | CareersBlockSelect<T>;
       };
   meta?:
     | T
@@ -1562,6 +1681,17 @@ export interface CTABlockSelect<T extends boolean = true> {
  */
 export interface ContactBlockComponentSelect<T extends boolean = true> {
   heading?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CareersBlock_select".
+ */
+export interface CareersBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  showFilters?: T;
   id?: T;
   blockName?: T;
 }
@@ -1777,6 +1907,64 @@ export interface PackagesSelect<T extends boolean = true> {
         feature?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "careers_select".
+ */
+export interface CareersSelect<T extends boolean = true> {
+  title?: T;
+  department?: T;
+  location?: T;
+  type?: T;
+  salaryRange?: T;
+  summary?: T;
+  description?: T;
+  requirements?:
+    | T
+    | {
+        requirement?: T;
+        id?: T;
+      };
+  responsibilities?:
+    | T
+    | {
+        responsibility?: T;
+        id?: T;
+      };
+  benefits?:
+    | T
+    | {
+        benefit?: T;
+        id?: T;
+      };
+  deadline?: T;
+  status?: T;
+  featured?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-applications_select".
+ */
+export interface JobApplicationsSelect<T extends boolean = true> {
+  position?: T;
+  positionTitle?: T;
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  location?: T;
+  resume?: T;
+  coverLetter?: T;
+  linkedIn?: T;
+  experience?: T;
+  status?: T;
+  adminNotes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -27,6 +27,7 @@ import CTABlock from '@/blocks/CTABlock/config'
 import { ServiceBlock } from '@/blocks/ServiceBlock/config'
 import WhyChooseUsBlock from '@/blocks/WhyChooseUs/config'
 import ContactBlock from '@/blocks/ContactBlock/config'
+import { CareersBlock } from '@/blocks/CareersBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -92,6 +93,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 WhyChooseUsBlock,
                 CTABlock,
                 ContactBlock,
+                CareersBlock,
               ],
               required: true,
               admin: {
