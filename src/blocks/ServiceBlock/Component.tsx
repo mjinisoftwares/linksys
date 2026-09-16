@@ -23,17 +23,21 @@ export const ServiceBlock: React.FC<ServiceBlockProps> = async (props) => {
       return service
     })
 
-    const fetchedServices = await payload.find({
-      collection: 'services',
-      depth: 1,
-      where: {
-        id: {
-          in: serviceIds,
+    try {
+      const fetchedServices = await payload.find({
+        collection: 'services',
+        depth: 1,
+        where: {
+          id: {
+            in: serviceIds,
+          },
         },
-      },
-    })
+      })
 
-    servicesData = fetchedServices.docs
+      servicesData = fetchedServices.docs
+    } catch (error) {
+      console.warn('Could not fetch services during build/render:', error)
+    }
   }
 
   return (

@@ -1,3 +1,4 @@
+import type { Career } from '@/payload-types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
@@ -13,19 +14,24 @@ interface CareersBlockProps {
 export const CareersBlockComponent: React.FC<CareersBlockProps> = async (props) => {
   const { id, heading, subheading, showFilters = true } = props
 
-  const payload = await getPayload({ config: configPromise })
+  let careers: { docs: Career[]; totalDocs: number } = { docs: [], totalDocs: 0 }
 
-  const careers = await payload.find({
-    collection: 'careers',
-    depth: 0,
-    limit: 100,
-    where: {
-      status: {
-        equals: 'open',
+  try {
+    const payload = await getPayload({ config: configPromise })
+    careers = await payload.find({
+      collection: 'careers',
+      depth: 0,
+      limit: 100,
+      where: {
+        status: {
+          equals: 'open',
+        },
       },
-    },
-    sort: '-createdAt',
-  })
+      sort: '-createdAt',
+    })
+  } catch (error) {
+    console.warn('Could not fetch careers during build/render:', error)
+  }
 
   return (
     <section id={`block-${id}`} className="w-full py-20 px-4 md:px-8 lg:px-16">
